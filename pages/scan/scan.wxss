@@ -1,0 +1,23 @@
+/* pages/scan/scan.wxss */
+.content text {
+  display: block;
+  word-break:break-all;
+  overflow: visible;
+  padding: 10px;
+}
+
+.content .scan-btn {
+  bottom: 20px;
+}
+
+.content .copy-btn {
+  bottom: 80px;
+}
+
+.content .btn {
+  position: fixed;
+  left: 25px;
+  width: 650rpx;
+  background-color: #1296db;
+  color: #333;
+}

@@ -1,0 +1,35 @@
+/* pages/code/code.wxss */
+.content form textarea {
+  box-sizing:border-box;
+  width: 700rpx;
+  min-height: 200rpx;
+  margin: 10px 25rpx;
+  border-radius: 10px;
+  padding: 10px;
+  background: #eee;
+}
+
+.content .switch-btn, .qrcode-view .close-btn {
+  bottom: 20px;
+}
+
+.content .paste-btn, .qrcode-view .download-btn {
+  bottom: 80px;
+}
+
+.content .clean-btn {
+  bottom: 140px;
+}
+
+.content .btn {
+  position: fixed;
+  left: 25px;
+  width: 650rpx;
+  background-color: #1296db;
+  color: #333;
+}
+
+.qrcode-view {
+  box-sizing:border-box;
+  padding: 20px;
+}

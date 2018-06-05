@@ -1,0 +1,7 @@
+<!--pages/scan/scan.wxml-->
+<view class='content'>
+  <text>{{codes}}</text>
+
+  <button class='btn copy-btn' bindtap="copy">复制</button>
+  <button class='btn scan-btn' bindtap="scan">扫码</button>
+</view>

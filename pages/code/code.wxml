@@ -1,0 +1,32 @@
+<!--pages/code/code.wxml-->
+<view class='content'>
+  <form bindsubmit="switchCode" hidden="{{showQrcode}}" >
+    <textarea
+        placeholder="输入要转码的内容"
+        maxlength="500"
+        focus='{{inputFocus}}'
+        auto-height="true"
+        show-confirm-bar="true"
+        bindFormSubmit="switch"
+        name="textarea"
+        value='{{content}}'
+      >
+    </textarea>
+    
+    <button class='btn clean-btn' bindtap='clean'> 清空 </button>
+    <button class='btn paste-btn' bindtap='paste'> 粘贴 </button>
+    <button class='btn switch-btn' form-type="submit"> 转换 </button>
+  </form>
+
+  <view class='qrcode-view' hidden="{{!showQrcode}}">
+    <image 
+      src="{{qrcode}}" 
+      style='width: {{imageSize}}px; height: {{imageSize}}px;' 
+      mode='widthFix' 
+      class="qrcode"></image>
+
+    <button class='btn download-btn' bindtap='download'> 下载 </button>
+    <button class='btn close-btn' bindtap="close"> 关闭 </button>
+  </view>
+  
+</view>
