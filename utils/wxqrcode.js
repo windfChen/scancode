@@ -1603,7 +1603,7 @@ var createQrCodeImg = function(text, options) {
         if(typeNumber >= 40) {
             throw new Error('Text too long to encode');
         } else {
-            return gen(text, {
+          return createQrCodeImg(text, {
                 size: size,
                 errorCorrectLevel: errorCorrectLevel,
                 typeNumber: typeNumber + 1
