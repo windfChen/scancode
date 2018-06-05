@@ -4,7 +4,6 @@
     <textarea
         placeholder="输入要转码的内容"
         maxlength="500"
-        focus='{{inputFocus}}'
         auto-height="true"
         show-confirm-bar="true"
         bindFormSubmit="switch"
