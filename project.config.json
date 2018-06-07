@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.98",
+	"libVersion": "1.6.6",
 	"appid": "wxb4f2b72363324ddd",
 	"projectname": "扫码小工具",
 	"isGameTourist": false,

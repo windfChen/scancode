@@ -2,6 +2,7 @@
 <view class='content'>
   <form bindsubmit="switchCode" hidden="{{showQrcode}}" >
     <textarea
+        hidden="{{showQrcode}}" 
         placeholder="输入要转码的内容"
         maxlength="500"
         auto-height="true"
@@ -20,9 +21,13 @@
   <view class='qrcode-view' hidden="{{!showQrcode}}">
     <image 
       src="{{qrcode}}" 
-      style='width: {{imageSize}}px; height: {{imageSize}}px;' 
+      style='display:none; width: {{imageSize}}px; height: {{imageSize}}px;' 
       mode='widthFix' 
       class="qrcode"></image>
+
+    <canvas  
+      canvas-id="qrcodeCanvas"
+      style='width: {{imageSize}}px; height: {{imageSize}}px;'  />
 
     <button class='btn download-btn' bindtap='download'> 下载 </button>
     <button class='btn close-btn' bindtap="close"> 关闭 </button>

@@ -74,19 +74,31 @@ Page({
   switchCode: function (event) {
     const content = event.detail.value.textarea;
 
+    // 如果内容为空，什么都不操作
     if (content == '') {
       this.setData({ inputFocus: true})
       return
     }
 
+    // 生成base64格式二维码图片图片
     const qrcodeImg = QR.createQrCodeImg(content, {
       size: parseInt(this.data.imageSize)
     })
 
+    // 改变变量
     this.setData({
       qrcode: qrcodeImg,
       showQrcode: true
     })
+    console.log(this.data.imageSize)
+    console.log(qrcodeImg)
+    // 画布绘图
+    const canvasContext = wx.createCanvasContext('qrcodeCanvas')
+    canvasContext.drawImage(qrcodeImg, 0, 0, this.data.imageSize, this.data.imageSize)
+    canvasContext.draw()
+
+    console.log('draw')
+
   },
 
   clean: function() {
@@ -112,12 +124,25 @@ Page({
   },
 
   download: function() {
+    // 画布生成图像
+    wx.canvasToTempFilePath({
+      x: 0,
+      y: 0,
+      width: this.data.imageSize,
+      height: this.data.imageSize,
+      destWidth: this.data.imageSize,
+      destHeight: this.data.imageSize,
+      canvasId: 'qrcodeCanvas',
+      success: function (res) {
+        console.log(res.tempFilePath)
 
-    console.log(this.data.qrcode)
-    wx.saveImageToPhotosAlbum({
-      filePath: this.data.qrcode,
-      success(res) {
-        console.log(res)
+        // 图像保存
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success(res) {
+            console.log(res)
+          }
+        })
       }
     })
   },
@@ -126,8 +151,6 @@ Page({
     var size = 0; 
     try {
       var res = wx.getSystemInfoSync();
-      // var scale = 750 / 300; //不同屏幕下QRcode的适配比例；设计稿是750宽
-      // var width = res.windowWidth / scale;
       size = res.windowWidth - 40;
 
     } catch (e) {
