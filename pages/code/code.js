@@ -1,7 +1,5 @@
 // pages/code/code.js
-// import QR from "../../utils/wxqrcode.js"
 const QR = require('../../utils/qrcode/index');
-
 
 Page({
 
@@ -71,6 +69,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+      title: '有句话一直想对你说',
+      path: '/pages/scan/scan?content=' + this.data.content
+    }
   },
 
   switchCode: function (event) {
@@ -79,6 +81,11 @@ Page({
     // 如果内容为空，什么都不操作
     if (content == '') {
       this.setData({ inputFocus: true})
+      wx.showToast({
+        title: '请填写内容',
+        icon: 'none',
+        duration: 1000
+      })
       return
     }
 
@@ -96,7 +103,6 @@ Page({
     this.setData({
       showQrcode: true
     })
-    
 
   },
 
@@ -133,13 +139,11 @@ Page({
       destHeight: this.data.imageSize,
       canvasId: 'qrcodeCanvas',
       success: function (res) {
-        console.log(res.tempFilePath)
 
         // 图像保存
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
           success(res) {
-            console.log(res)
           }
         })
       }

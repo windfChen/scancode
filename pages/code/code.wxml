@@ -5,6 +5,7 @@
         hidden="{{showQrcode}}" 
         placeholder="输入要转码的内容"
         maxlength="500"
+        focus="{{inputFocus}}"
         auto-height="true"
         show-confirm-bar="true"
         bindFormSubmit="switch"
@@ -19,12 +20,6 @@
   </form>
 
   <view class='qrcode-view' hidden="{{!showQrcode}}">
-    <image 
-      src="{{qrcode}}" 
-      style='display:none; width: {{imageSize}}px; height: {{imageSize}}px;' 
-      mode='widthFix' 
-      class="qrcode"></image>
-
     <canvas  
       canvas-id="qrcodeCanvas"
       style='width: {{imageSize}}px; height: {{imageSize}}px;'  />
