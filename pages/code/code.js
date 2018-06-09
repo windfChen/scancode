@@ -1,5 +1,7 @@
 // pages/code/code.js
-import QR from "../../utils/wxqrcode.js"
+// import QR from "../../utils/wxqrcode.js"
+const QR = require('../../utils/qrcode/index');
+
 
 Page({
 
@@ -80,24 +82,21 @@ Page({
       return
     }
 
-    // 生成base64格式二维码图片图片
-    const qrcodeImg = QR.createQrCodeImg(content, {
-      size: parseInt(this.data.imageSize)
-    })
+    // 使用canvas绘制二维码d
+    const canvasContext = wx.createCanvasContext('qrcodeCanvas')
+    QR.drawQRCodeToCanvas(content, {
+      ctx: canvasContext,
+      size: this.data.imageSize,
+      color: '#000000',
+      background: '#FFFFFF'
+    });
+    canvasContext.draw();
 
     // 改变变量
     this.setData({
-      qrcode: qrcodeImg,
       showQrcode: true
     })
-    console.log(this.data.imageSize)
-    console.log(qrcodeImg)
-    // 画布绘图
-    const canvasContext = wx.createCanvasContext('qrcodeCanvas')
-    canvasContext.drawImage(qrcodeImg, 0, 0, this.data.imageSize, this.data.imageSize)
-    canvasContext.draw()
-
-    console.log('draw')
+    
 
   },
 
