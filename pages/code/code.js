@@ -1,5 +1,6 @@
 // pages/code/code.js
 const QR = require('../../utils/qrcode/index');
+const contant = require('../../utils/contant');
 
 Page({
 
@@ -33,7 +34,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (options) {
   
   },
 
@@ -69,10 +70,15 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '有句话一直想对你说',
-      path: '/pages/scan/scan?content=' + this.data.content
+    if (this.data.content != '') {
+      return {
+        title: '有句话一直想对你说',
+        path: '/pages/scan/scan?content=' + this.data.content,
+        imageUrl: '/images/defaultQrcode.png'
+      }
     }
+
+    return contant.shareInfo()
   },
 
   switchCode: function (event) {
@@ -101,6 +107,7 @@ Page({
 
     // 改变变量
     this.setData({
+      content: content,
       showQrcode: true
     })
 
@@ -157,8 +164,7 @@ Page({
       size = res.windowWidth - 40;
 
     } catch (e) {
-      // Do something when catch error
-      // console.log("获取设备信息失败"+e);
+      console.log("获取设备信息失败:"+e);
     }
     return size;
   }

@@ -1,18 +1,29 @@
 // pages/scan/scan.js
+const contant = require('../../utils/contant');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    codes: ''
+    codeList: [],
+    currentIndex: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.scan()
+    if (options.content) {
+      this.addCode(options.content)
+      wx.showToast({
+        title: '当先显示为接收到的消息',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      this.scan()
+    }
   },
 
   /**
@@ -60,28 +71,52 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    return contant.shareInfo()
   }, 
 
   scan: function() {
     wx.scanCode({
       scanType: 'qrCode',
       success: (result) => {
-        console.log(result)
-        this.setData({
-          codes: result.result
-        })
+        this.addCode(result.result)
       }
     })
   },
 
+  addCode: function(content) {
+    this.data.codeList[this.data.codeList.length] = content
+    this.setData({
+      codeList: this.data.codeList.reverse()
+    })
+  },
+
+  del: function(event) {
+    const index = event.currentTarget.dataset.index
+    this.data.codeList.splice(index, 1)
+    this.setData({
+      codeList: this.data.codeList,
+      currentIndex: this.data.currentIndex == 0 ? 0 : this.data.currentIndex - 1
+    })
+  },
+
+  choose: function(event) {
+    this.setData({
+      currentIndex: event.currentTarget.dataset.index
+    })
+  },
+
   copy: function() {
-    if (this.data.codes == '') {
+    if (this.data.codeList.length == 0) {
+      wx.showToast({
+        title: '没有可复制的内容',
+        icon: 'none',
+        duration: 1000
+      })
       return;
     }
 
     wx.setClipboardData({
-      data: this.data.codes,
+      data: this.data.codeList[this.data.currentIndex],
       success: (res) => {
         wx.showToast({
           title: '复制成功',
