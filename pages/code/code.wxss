@@ -1,7 +1,6 @@
 /* pages/code/code.wxss */
 .content form textarea {
-  box-sizing:border-box;
-  width: 700rpx;
+  width: 650rpx;
   min-height: 200rpx;
   margin: 10px 25rpx;
   border-radius: 10px;
