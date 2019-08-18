@@ -7,7 +7,8 @@ Page({
    */
   data: {
     codeList: [],
-    currentIndex: 0
+    currentIndex: 0,
+    showAd: false
   },
 
   /**
@@ -76,7 +77,7 @@ Page({
 
   scan: function() {
     wx.scanCode({
-      scanType: 'qrCode',
+      scanType: ['barCode', 'qrCode'],
       success: (result) => {
         this.addCode(result.result)
       }
@@ -125,5 +126,22 @@ Page({
         })
       }
     })    
+  },
+
+  adLoad() {
+    console.log('Banner 广告加载成功')
+    this.setData({
+      showAd: true
+    })
+  },
+  adError(err) {
+    console.log('Banner 广告加载失败', err)
+  },
+  adClose() {
+    console.log('Banner 广告关闭')
+    this.setData({
+      showAd: false
+    })
   }
+
 })

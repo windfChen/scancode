@@ -1,9 +1,7 @@
 {
   "pages": [
     "pages/code/code",
-    "pages/scan/scan",
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/scan/scan"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,17 +14,20 @@
     "color": "#707070",
     "backgroundColor": "#eee",
     "borderStyle": "white",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/code/code",
         "text": "转码",
         "iconPath": "/images/tabbar/code.png",
         "selectedIconPath": "/images/tabbar/code_on.png"
-      }, {
+      },
+      {
         "pagePath": "pages/scan/scan",
         "text": "扫码",
         "iconPath": "/images/tabbar/scan.png",
         "selectedIconPath": "/images/tabbar/scan_on.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

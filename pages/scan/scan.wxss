@@ -1,4 +1,9 @@
 /* pages/scan/scan.wxss */
+.adView {
+  text-align: center;
+  background-color: #fff;
+}
+
 .content {
   position: relative;
 }

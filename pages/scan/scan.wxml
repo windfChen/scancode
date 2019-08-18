@@ -1,4 +1,7 @@
 <!--pages/scan/scan.wxml-->
+<view class="code adView" hidden='{{!showAd}}'>
+  <ad unit-id="adunit-7e646079577fa7f5" bindload="adLoad" binderror="adError" bindclose="adClose" ad-intervals="30"></ad>
+</view>
 <view class='content'>
   <view class='code-box'>
     <view class="code {{currentIndex == index? 'currentCode': ''}}" 

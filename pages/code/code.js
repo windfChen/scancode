@@ -162,7 +162,6 @@ Page({
     try {
       var res = wx.getSystemInfoSync();
       size = res.windowWidth - 40;
-
     } catch (e) {
       console.log("获取设备信息失败:"+e);
     }

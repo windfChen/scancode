@@ -15,6 +15,8 @@
 	"appid": "wxb4f2b72363324ddd",
 	"projectname": "扫码小工具",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
