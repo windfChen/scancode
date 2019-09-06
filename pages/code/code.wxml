@@ -17,6 +17,7 @@
     <button class='btn clean-btn' bindtap='clean'> 清空 </button>
     <button class='btn paste-btn' bindtap='paste'> 粘贴 </button>
     <button class='btn switch-btn' form-type="submit"> 转换 </button>
+    <button class='btn switch-btn ad-btn' bindtap='showAd'> 查看广告 </button>
   </form>
 
   <view class='qrcode-view' hidden="{{!showQrcode}}">

@@ -27,6 +27,10 @@
   background-color: #1296db;
   color: #333;
 }
+.content .ad-btn {
+  background-color: #12dbba;
+  color: #0e519c;
+}
 
 .qrcode-view {
   box-sizing:border-box;

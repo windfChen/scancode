@@ -35,7 +35,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (options) {
-  
+    this.showInterstitialAd()
   },
 
   /**
@@ -166,5 +166,56 @@ Page({
       console.log("获取设备信息失败:"+e);
     }
     return size;
+  },
+
+  showAd: function() {
+    // 在页面中定义激励视频广告
+    let videoAd = null
+
+    // 在页面onLoad回调事件中创建激励视频广告实例
+    if (wx.createRewardedVideoAd) {
+      videoAd = wx.createRewardedVideoAd({
+        adUnitId: 'adunit-bab5c106fb162274'
+      })
+      videoAd.onLoad(() => { 
+        console.log('激励视频加载完成')
+      })
+      videoAd.onError((err) => { })
+      videoAd.onClose((res) => { })
+    }
+
+    // 用户触发广告后，显示激励视频广告
+    if (videoAd) {
+      videoAd.show().catch(() => {
+        // 失败重试
+        videoAd.load()
+          .then(() => videoAd.show())
+          .catch(err => {
+            console.log('激励视频 广告显示失败')
+          })
+      })
+    }
+  },
+
+  showInterstitialAd() {
+    // 在页面中定义插屏广告
+    let interstitialAd = null
+
+    // 在页面onLoad回调事件中创建插屏广告实例
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-dafbf0c217a8a6af'
+      })
+      interstitialAd.onLoad(() => { })
+      interstitialAd.onError((err) => { })
+      interstitialAd.onClose(() => { })
+    }
+
+    // 在适合的场景显示插屏广告
+    if (interstitialAd) {
+      interstitialAd.show().catch((err) => {
+        console.error(err)
+      })
+    }
   }
 })
