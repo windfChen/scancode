@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/code/code",
-    "pages/scan/scan"
+    "pages/scan/scan",
+    "pages/code/code"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,16 +16,16 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/code/code",
-        "text": "转码",
-        "iconPath": "/images/tabbar/code.png",
-        "selectedIconPath": "/images/tabbar/code_on.png"
-      },
-      {
         "pagePath": "pages/scan/scan",
         "text": "扫码",
         "iconPath": "/images/tabbar/scan.png",
         "selectedIconPath": "/images/tabbar/scan_on.png"
+      },
+      {
+        "pagePath": "pages/code/code",
+        "text": "转码",
+        "iconPath": "/images/tabbar/code.png",
+        "selectedIconPath": "/images/tabbar/code_on.png"
       }
     ]
   },

@@ -22,8 +22,6 @@ Page({
         icon: 'none',
         duration: 2000
       })
-    } else {
-      this.scan()
     }
   },
 
