@@ -63,3 +63,7 @@
   background-color: #1296db;
   color: #333;
 }
+
+.btn_disable {
+  background-color: #eee !important;
+}

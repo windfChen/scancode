@@ -15,7 +15,7 @@
   </view>
 
   <view class='btn-box'>
-    <button class='btn copy-btn' bindtap="copy">复制</button>
+    <button class="btn copy-btn {{codeList.length == 0? 'btn_disable': ''}}" bindtap="copy">复制</button>
     <button class='btn scan-btn' bindtap="scan">扫码</button>
   </view>
 </view>
