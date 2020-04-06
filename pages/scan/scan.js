@@ -129,7 +129,7 @@ Page({
   adLoad() {
     console.log('Banner 广告加载成功')
     this.setData({
-      showAd: true
+      showAd: false  // 取消广告
     })
   },
   adError(err) {

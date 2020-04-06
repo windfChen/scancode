@@ -8,7 +8,7 @@
         data-index="{{index}}" 
         bindtap='choose' 
         wx:for="{{codeList}}" 
-        wx:key="{{index}}">
+        wx:key="*this">
       <text>{{item}}</text>
       <image src="./images/close.png" bindtap='del' data-index="{{index}}" ></image>
     </view>
