@@ -25,6 +25,7 @@
       canvas-id="qrcodeCanvas"
       style='width: {{imageSize}}px; height: {{imageSize}}px;'  />
 
+    <button class='btn set-image-btn' bindtap='setImage'> 上传logo </button>
     <button class='btn download-btn' bindtap='download'> 下载 </button>
     <button class='btn close-btn' bindtap="close"> 关闭 </button>
   </view>

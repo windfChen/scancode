@@ -9,6 +9,7 @@ Page({
    */
   data: {
     content: '',
+    imgSrc: '',
     qrcode: '',
     showQrcode: false,
     imageSize : 0,
@@ -82,10 +83,20 @@ Page({
 
   switchCode: function (event) {
     const content = event.detail.value.textarea;
+    this.setData({
+      content
+    })
+
+    this.toQRCode();
+  },
+
+  toQRCode() {
+    const content = this.data.content;
+    const imgSrc = this.data.imgSrc;
 
     // 如果内容为空，什么都不操作
     if (content == '') {
-      this.setData({ inputFocus: true})
+      this.setData({ inputFocus: true })
       wx.showToast({
         title: '请填写内容',
         icon: 'none',
@@ -102,6 +113,14 @@ Page({
       color: '#000000',
       background: '#FFFFFF'
     });
+
+    // 设置图片
+    if (imgSrc) {
+      canvasContext.drawImage(imgSrc, 
+          this.data.imageSize * 0.36, this.data.imageSize * 0.36, 
+          this.data.imageSize * 0.28, this.data.imageSize * 0.28);
+    }
+
     canvasContext.draw();
 
     // 改变变量
@@ -109,7 +128,19 @@ Page({
       content: content,
       showQrcode: true
     })
+  },
 
+  setImage() {
+    wx.chooseImage({
+      success: (res) => {
+        const tempFilePaths = res.tempFilePaths
+        this.setData({
+          imgSrc: tempFilePaths[0]
+        })
+
+        this.toQRCode();
+      }
+    })
   },
 
   clean: function() {
@@ -135,6 +166,23 @@ Page({
   },
 
   download: function() {
+    wx.getSetting({
+      success: (res) => {
+        if (!res.authSetting['scope.writePhotosAlbum']) {
+          wx.authorize({
+            scope: 'scope.writePhotosAlbum',
+            success: () => {
+              this.doDownload()
+            }
+          })
+        } else {
+          this.doDownload()
+        }
+      }
+    })
+  },
+
+  doDownload() {
     // 画布生成图像
     wx.canvasToTempFilePath({
       x: 0,
@@ -145,7 +193,7 @@ Page({
       destHeight: this.data.imageSize,
       canvasId: 'qrcodeCanvas',
       success: function (res) {
-
+        console.log(res.tempFilePath)
         // 图像保存
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,

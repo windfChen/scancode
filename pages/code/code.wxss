@@ -16,7 +16,7 @@
   bottom: 80px;
 }
 
-.content .clean-btn {
+.content .clean-btn, .qrcode-view .set-image-btn {
   bottom: 140px;
 }
 
