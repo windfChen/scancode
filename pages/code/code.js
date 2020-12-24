@@ -215,6 +215,19 @@ Page({
     return size;
   },
 
+  copyLink() {
+    wx.setClipboardData({
+      data: '460436388',
+      success: (res) => {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'success',
+          duration: 2000
+        })
+      }
+    })  
+  },
+  
   showAd: function() {
     // 在页面中定义激励视频广告
     let videoAd = null

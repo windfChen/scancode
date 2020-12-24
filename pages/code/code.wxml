@@ -17,7 +17,7 @@
     <button class='btn clean-btn' bindtap='clean'> 清空 </button>
     <button class='btn paste-btn' bindtap='paste'> 粘贴 </button>
     <button class='btn switch-btn' form-type="submit"> 转换 </button>
-    <view class="link">联系我们：460436388（qq号，微信同）</view>
+    <view bindtap="copyLink" class="link">联系我们：460436388（qq号，微信同）[复制]</view>
     <!-- <button class='btn switch-btn ad-btn' bindtap='showAd'> 查看广告 </button> -->
   </form>
 
@@ -29,7 +29,7 @@
     <button class='btn set-image-btn' bindtap='setImage'> 上传logo </button>
     <button class='btn download-btn' bindtap='download'> 下载 </button>
     <button class='btn close-btn' bindtap="close"> 关闭 </button>
-    <view class="link">联系我们：460436388（qq号，微信同）</view>
+    <view bindtap="copyLink" class="link">联系我们：460436388（qq号，微信同）[复制]</view>
   </view>
   
 </view>

@@ -38,11 +38,13 @@
 }
 
 .link {
-  bottom: 20rpx;
+  bottom: 0rpx;
   position: fixed;
   left: 25px;
   width: 650rpx;
   color: #aaa;
   font-size: 12px;
   text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
 }
