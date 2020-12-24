@@ -49,11 +49,11 @@
 }
 
 .content .scan-btn {
-  bottom: 20px;
+  bottom: 60rpx;
 }
 
 .content .copy-btn {
-  bottom: 80px;
+  bottom: 180rpx;
 }
 
 .content .btn {
@@ -66,4 +66,14 @@
 
 .btn_disable {
   background-color: #eee !important;
+}
+
+.link {
+  bottom: 20rpx;
+  position: fixed;
+  left: 25px;
+  width: 650rpx;
+  color: #aaa;
+  font-size: 12px;
+  text-align: center;
 }

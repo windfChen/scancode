@@ -9,15 +9,15 @@
 }
 
 .content .switch-btn, .qrcode-view .close-btn {
-  bottom: 20px;
+  bottom: 60rpx;
 }
 
 .content .paste-btn, .qrcode-view .download-btn {
-  bottom: 80px;
+  bottom: 180rpx;
 }
 
 .content .clean-btn, .qrcode-view .set-image-btn {
-  bottom: 140px;
+  bottom: 300rpx;
 }
 
 .content .btn {
@@ -35,4 +35,14 @@
 .qrcode-view {
   box-sizing:border-box;
   padding: 20px;
+}
+
+.link {
+  bottom: 20rpx;
+  position: fixed;
+  left: 25px;
+  width: 650rpx;
+  color: #aaa;
+  font-size: 12px;
+  text-align: center;
 }
